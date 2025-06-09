@@ -28,7 +28,7 @@ app.use(session({
 // Middleware global - bikin isLoggedIn bisa diakses di semua EJS
 app.use((req, res, next) => {
   res.locals.isLoggedIn = !!req.session.user;
-  res.locals.user = req.session.user || null; // tambahkan ini supaya bisa akses <%= user %>
+  res.locals.user = req.session.user || null; 
   next();
 });
 
@@ -38,12 +38,8 @@ app.use('/pasien', pasienRouter);
 app.use('/dokter', dokterRouter);
 app.use('/pendaftaran', pendaftaranRouter);
 app.use('/rekamMedis', rekamMedisRoutes);
-app.use('/', homeRouter); // biarkan ini, yang bawah dihapus
+app.use('/', homeRouter); 
 
-// 🚫 HAPUS INI:
-// app.get("/", (req, res) => {
-//   res.render("home");
-// });
 
 const PORT = 3000;
 app.listen(PORT, () => {
