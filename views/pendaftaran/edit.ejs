@@ -1,0 +1,47 @@
+<%- include('../partials/header') %>
+
+<div class="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-12">
+  <div class="bg-white shadow-xl rounded-2xl p-8 w-full max-w-lg">
+    <h2 class="text-2xl font-bold text-blue-600 mb-6">Edit Pendaftaran</h2>
+
+    <form action="/pendaftaran/<%= pendaftaran.id_pendaftaran %>/edit" method="POST" class="space-y-4">
+      <div>
+        <label for="id_pasien" class="block mb-1 font-semibold">Pasien:</label>
+        <select name="id_pasien" class="w-full border px-4 py-2 rounded" required>
+          <% pasien.forEach(p => { %>
+            <option value="<%= p.id_pasien %>" <%= p.id_pasien === pendaftaran.id_pasien ? 'selected' : '' %>>
+              <%= p.nama %>
+            </option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div>
+        <label for="id_dokter" class="block mb-1 font-semibold">Dokter:</label>
+        <select name="id_dokter" class="w-full border px-4 py-2 rounded" required>
+          <% dokter.forEach(d => { %>
+            <option value="<%= d.id_dokter %>" <%= d.id_dokter === pendaftaran.id_dokter ? 'selected' : '' %>>
+              <%= d.nama %>
+            </option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div>
+        <label for="tanggal" class="block mb-1 font-semibold">Tanggal:</label>
+        <input type="date" name="tanggal" value="<%= pendaftaran.tanggal ? pendaftaran.tanggal.toISOString().split('T')[0] : '' %>" class="w-full border px-4 py-2 rounded" required>
+      </div>
+
+      <div>
+        <label for="keluhan" class="block mb-1 font-semibold">Keluhan:</label>
+        <textarea name="keluhan" class="w-full border px-4 py-2 rounded" rows="3" required><%= pendaftaran.keluhan %></textarea>
+      </div>
+
+      <div class="flex justify-end gap-2">
+        <a href="/pendaftaran" class="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400">Batal</a>
+        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Update</button>
+      </div>
+    </form>
+  </div>
+</div>
+

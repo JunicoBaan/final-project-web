@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Klinik Braw</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  <nav class="bg-blue-700 text-white px-6 py-4 shadow">
+    <div class="container mx-auto flex items-center justify-between">
+      <!-- Logo Klinik -->
+      <a href="/" class="text-xl font-bold hover:opacity-90 transition">
+        Klinik Braw
+      </a>
+
+      <!-- Menu Navigasi -->
+      <div class="space-x-6">
+        <a href="/pasien" class="hover:text-gray-200">Pasien</a>
+        <a href="/dokter" class="hover:text-gray-200">Dokter</a>
+        <a href="/pendaftaran" class="hover:text-gray-200">Pendaftaran</a>
+        <a href="/rekamMedis" class="hover:text-gray-200">Rekam Medis</a>
+        <% if (isLoggedIn) { %>
+          <a href="/logout" class="hover:text-red-300 font-semibold">Logout</a>
+        <% } else { %>
+          <a href="/login" class="hover:text-gray-200">Login</a>
+        <% } %>
+      </div>
+    </div>
+  </nav>

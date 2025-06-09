@@ -1,0 +1,37 @@
+<%- include('../partials/header') %>
+
+<div class="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-12">
+  <div class="bg-white shadow-xl rounded-2xl p-8 w-full max-w-lg">
+    <h2 class="text-2xl font-bold text-blue-600 mb-6">Edit Rekam Medis</h2>
+
+    <form action="/rekamMedis/<%= rekamMedis.id_rekam %>/edit" method="POST" class="space-y-4">
+      <div>
+        <label for="id_pendaftaran" class="block mb-1 font-semibold">Pendaftaran</label>
+        <select name="id_pendaftaran" id="id_pendaftaran" class="w-full border px-4 py-2 rounded">
+          <% pendaftaran.forEach(pd => { %>
+            <option value="<%= pd.id_pendaftaran %>" <%= pd.id_pendaftaran === rekamMedis.id_pendaftaran ? 'selected' : '' %>>
+              <%= pd.nama_pasien %> - <%= pd.nama_dokter %>
+            </option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div>
+        <label for="diagnosa" class="block mb-1 font-semibold">Diagnosa</label>
+        <textarea name="diagnosa" id="diagnosa" rows="3" class="w-full border px-4 py-2 rounded"><%= rekamMedis.diagnosa %></textarea>
+      </div>
+
+      <div>
+        <label for="tindakan" class="block mb-1 font-semibold">Tindakan</label>
+        <textarea name="tindakan" id="tindakan" rows="3" class="w-full border px-4 py-2 rounded"><%= rekamMedis.tindakan %></textarea>
+      </div>
+
+      <div class="flex justify-end gap-2">
+        <a href="/rekamMedis" class="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400">Batal</a>
+        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Update</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+

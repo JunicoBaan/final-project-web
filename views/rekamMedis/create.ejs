@@ -1,0 +1,36 @@
+<%- include('../partials/header') %>
+
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-2xl font-bold mb-6">Tambah Rekam Medis</h1>
+
+  <form action="/rekamMedis/create" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div class="mb-4">
+      <label for="id_pendaftaran" class="block text-gray-700 font-bold mb-2">Pendaftaran</label>
+      <select name="id_pendaftaran" id="id_pendaftaran" class="shadow border rounded w-full py-2 px-3 text-gray-700">
+        <% pendaftaran.forEach(pd => { %>
+          <option value="<%= pd.id_pendaftaran %>">
+            <%= pd.nama_pasien %> - <%= pd.nama_dokter %>
+          </option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="mb-4">
+      <label for="diagnosa" class="block text-gray-700 font-bold mb-2">Diagnosa</label>
+      <textarea name="diagnosa" id="diagnosa" rows="3" class="shadow border rounded w-full py-2 px-3 text-gray-700"></textarea>
+    </div>
+
+    <div class="mb-4">
+      <label for="tindakan" class="block text-gray-700 font-bold mb-2">Tindakan</label>
+      <textarea name="tindakan" id="tindakan" rows="3" class="shadow border rounded w-full py-2 px-3 text-gray-700"></textarea>
+    </div>
+
+    <div class="flex justify-end">
+      <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Simpan
+      </button>
+    </div>
+  </form>
+</div>
+
+

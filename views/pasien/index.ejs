@@ -1,0 +1,47 @@
+<%- include('../partials/header') %>
+
+<div style="background-image: url('/images/bgklinik.jpg'); background-size: cover; background-position: center;" class="min-h-screen py-12">
+  <div class="max-w-5xl mx-auto bg-white bg-opacity-90 p-6 rounded-lg shadow-md">
+    <div class="flex items-center justify-between mb-6">
+      <h1 class="text-2xl font-bold">Daftar Pasien</h1>
+      
+      <% if (user) { %>
+        <a href="/pasien/create" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+          + Tambah Pasien
+        </a>
+      <% } %>
+    </div>
+
+    <div class="overflow-x-auto bg-white shadow rounded-lg">
+      <table class="min-w-full table-auto text-sm text-left">
+        <thead class="bg-green-600 text-white">
+          <tr>
+            <th class="px-6 py-3 font-semibold">No</th>
+            <th class="px-6 py-3 font-semibold">Nama</th>
+            <th class="px-6 py-3 font-semibold">Alamat</th>
+            <th class="px-6 py-3 font-semibold">No Telepon</th>
+            <% if (user) { %>
+              <th class="px-6 py-3 font-semibold text-center">Aksi</th>
+            <% } %>
+          </tr>
+        </thead>
+        <tbody>
+          <% pasien.forEach((p, index) => { %>
+            <tr class="border-b hover:bg-gray-50">
+              <td class="px-6 py-3"><%= index + 1 %></td>
+              <td class="px-6 py-3"><%= p.nama %></td>
+              <td class="px-6 py-3"><%= p.alamat %></td>
+              <td class="px-6 py-3"><%= p.no_telepon %></td>
+              <% if (user) { %>
+                <td class="px-6 py-3 text-center space-x-2">
+                  <a href="/pasien/<%= p.id_pasien %>/edit" class="text-blue-600 hover:underline">Edit</a>
+                  <a href="/pasien/delete/<%= p.id_pasien %>" class="text-red-600 hover:underline" onclick="return confirm('Yakin ingin menghapus pasien ini?')">Hapus</a>
+                </td>
+              <% } %>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

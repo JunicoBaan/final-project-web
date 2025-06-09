@@ -1,0 +1,38 @@
+<%- include('../partials/header') %>
+
+<div class="container mx-auto p-4">
+  <h1 class="text-xl font-bold mb-4">Tambah Pendaftaran</h1>
+
+  <form action="/pendaftaran/create" method="POST" class="space-y-4">
+    <div>
+      <label for="id_pasien" class="block">Pasien</label>
+      <select name="id_pasien" class="w-full p-2 border rounded">
+        <% pasien.forEach(p => { %>
+          <option value="<%= p.id_pasien %>"><%= p.nama %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div>
+      <label for="id_dokter" class="block">Dokter</label>
+      <select name="id_dokter" class="w-full p-2 border rounded">
+        <% dokter.forEach(d => { %>
+          <option value="<%= d.id_dokter %>"><%= d.nama %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div>
+      <label for="tanggal" class="block">Tanggal</label>
+      <input type="date" name="tanggal" class="w-full p-2 border rounded" required>
+    </div>
+
+    <div>
+      <label for="keluhan" class="block">Keluhan</label>
+      <textarea name="keluhan" class="w-full p-2 border rounded" required></textarea>
+    </div>
+
+    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Simpan</button>
+  </form>
+</div>
+
